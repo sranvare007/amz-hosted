@@ -90,7 +90,12 @@
     })(document);
   </script>
   <script type="text/javascript">
-    var params = "";
+    const currentUrl = window.location.href;
+    const url = new URL(currentUrl);
+    const queryParams = new URLSearchParams(url.search);
+
+    var params = queryParams.get("userId");
+
     document.getElementById("LoginWithAmazon").onclick = function () {
       options = {
         scope: "payments::conduct_silentpay",
