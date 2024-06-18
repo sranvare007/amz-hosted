@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login with Amazon</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #f0f0f0;
+      }
+
+      .login-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+
+      .login-container h2 {
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .form-group {
+        margin-bottom: 15px;
+      }
+
+      .form-group label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+      }
+
+      .form-group input[type="text"],
+      .form-group input[type="password"] {
+        width: 100%;
+        padding: 8px;
+        border: 1px solid #ccc;
+        border-radius: 3px;
+      }
+
+      .form-group button {
+        width: 100%;
+        padding: 10px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+
+      .form-group button:hover {
+        background-color: #0056b3;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- <div id="amazon-root"> -->
+    <div class="login-container">
+      <h2>Login</h2>
+      <form action="">
+        <div id="amazon-root" class="form-group">
+          <button type="submit" id="LoginWithAmazon">Login with Amazon</button>
+        </div>
+      </form>
+    </div>
+    <!-- </div> -->
+  </body>
+  <script type="text/javascript">
+    window.onAmazonLoginReady = function () {
+      amazon.Login.setClientId(
+        "amzn1.application-oa2-client.c366042cbcb949ee8c075411291a2e1a"
+      );
+    };
+    (function (d) {
+      var a = d.createElement("script");
+      a.type = "text/javascript";
+      a.async = true;
+      a.id = "amazon-login-sdk";
+      a.src = "https://assets.loginwithamazon.com/sdk/eu/login1.js";
+      d.getElementById("amazon-root").appendChild(a);
+    })(document);
+  </script>
+  <script type="text/javascript">
+    var params = "";
+    document.getElementById("LoginWithAmazon").onclick = function () {
+      options = {
+        scope: "payments::conduct_silentpay",
+        response_type: "code",
+        state: params,
+        popup: false,
+      };
+      amazon.Login.setAmazonDomain(amazon.Login.amazonDomain["in"]);
+      amazon.Login.authorize(options, "https://example.org/redirect_here");
+      return false;
+    };
+  </script>
+</html>
