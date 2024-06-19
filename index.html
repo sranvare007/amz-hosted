@@ -104,7 +104,10 @@
         popup: false,
       };
       amazon.Login.setAmazonDomain(amazon.Login.amazonDomain["in"]);
-      amazon.Login.authorize(options, "https://sixergame.com/redirect");
+      amazon.Login.authorize(
+        options,
+        "https://sixergame.com/amazon_pay_acc_link"
+      );
       return false;
     };
   </script>
