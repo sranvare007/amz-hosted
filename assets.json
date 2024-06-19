@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.sixerapp",
+      "sha256_cert_fingerprints": [
+        "C3:4E:69:80:07:6E:43:20:7B:FD:3B:8A:55:DD:06:AC:90:14:7D:B6"
+      ]
+    }
+  }
+]
